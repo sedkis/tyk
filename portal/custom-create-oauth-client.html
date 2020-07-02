@@ -1,0 +1,34 @@
+This is where you can register an OAuth client that will provide access to all the APIs under the API Catalogue.
+
+<form>
+
+    <br>
+    <label for="r2">App Description</label>
+    <input type="text" name="appDescription" value="App Description" id="r2">
+    
+
+    <br>
+    <label for="r3">Redirect URL</label>
+    <input type="text" name="redirectURLs" value="Redirect Url" id="r3">
+
+    <input type="text" name="policy_id" value="5efdfc7327d9a10001e0d326" id="r4" style="display:none">
+    
+    <input type="text" name="csrf_token" value="MY_CSRF_TOKEN" id="r5" style="display:none">
+    
+  </form>
+   
+  <br>
+<button id=mybutton>Create New Client</button>
+
+<script>
+window.onload = function() {
+
+    $("#mybutton").click(function(){
+        console.log('button pressed')
+
+        var data = $('form').serialize();
+        $.post('http://tyk-portal.localhost:3000/portal/oauth-clients/new', data);
+    });
+}
+    
+</script>
