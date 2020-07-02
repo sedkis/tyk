@@ -1,0 +1,75 @@
+<h2> Purchasable APIs</h2>
+
+<script>
+window.onload = function() {
+
+    $.ajax({  
+            type: "GET",
+            url: "http://localhost:8080/public-apis/pub-catalogues",  
+            beforeSend: function() 
+            {
+                $('html, body').animate({scrollTop: 0
+                }, 'slow');
+                $("#response").html('<img src="loading.gif" align="absmiddle" alt="Loading..."> Loading...<br clear="all" /><br clear="all" />');
+            },  
+            success: function(response)
+            {
+                var htmlResponse = '<table id=results>\
+                <thead>\
+                <tr>\
+                  <th>API Name</th>\
+                  <th>Auth Type</th>\
+                  <th>Documentation</th>\
+                  <th>Purchase</th>\
+                </tr>\
+                </thead>\
+                <tbody id="myTable">'
+
+                JSON.parse(response).apis.forEach( item => {
+                    htmlResponse += '  <tr>\
+                    <td>' + item.name + '</td>\
+                    <td>' + item.auth_type + '</td>\
+                    <td><button><a href="/portal/apis/' + item.documentation + '/documentation/">View</a></button></td>\
+                    <td><button><a href="/portal/member/policies/' + item.policy_id + '/request">Purchase</a></button></td>\
+                  </tr>'
+                });
+                htmlResponse += "</tbody></table>"
+
+                $('#results')[0].innerHTML = htmlResponse;
+            }
+        });
+
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    }
+</script>
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<p>Type something in the input field to search the table for first names, last names or emails:</p>  
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+
+<div id=results>
+</results>

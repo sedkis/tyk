@@ -1,0 +1,73 @@
+<h2> Filterable Table </h2>
+
+<script>
+window.onload = function() {
+
+    $.ajax({  
+            type: "GET",
+            url: "https://www.mocky.io/v2/5eb1a7c53200005c8f28f8b5",  
+            beforeSend: function() 
+            {
+                $('html, body').animate({scrollTop: 0
+                }, 'slow');
+                $("#response").html('<img src="loading.gif" align="absmiddle" alt="Loading..."> Loading...<br clear="all" /><br clear="all" />');
+            },  
+            success: function(response)
+            {
+                var htmlResponse = '<table id=results>\
+                <thead>\
+                <tr>\
+                  <th>Name</th>\
+                  <th>Location</th>\
+                  <th>Age</th>\
+                </tr>\
+                </thead>\
+                <tbody id="myTable">'
+
+                response.forEach( item => {
+                    htmlResponse += '  <tr>\
+                    <td>' + item.name + '</td>\
+                    <td>' + item.location + '</td>\
+                    <td>' + item.Age + '</td>\
+                  </tr>'
+                });
+                htmlResponse += "</tbody></table>"
+
+                $('#results')[0].innerHTML = htmlResponse;
+            }
+        });
+
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    }
+</script>
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<p>Type something in the input field to search the table for first names, last names or emails:</p>  
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+
+<div id=results>
+</results>

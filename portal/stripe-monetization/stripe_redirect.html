@@ -1,0 +1,33 @@
+<!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+
+<div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_test_5g4wAI1HJihkJGvaXtKNtlrR00gNwgXubC');
+
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      items: [{sku: 'sku_Fv3BrX8w9kR2QK', quantity: 1}],
+      
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      clientReferenceId: new URLSearchParams(window.location.search).get('tyk_key_request_id'),
+      successUrl: 'http://www.tyk-portal-test.com:3000/portal/success',
+      cancelUrl: 'http://www.tyk-portal-test.com:3000/portal/fail',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+})();
+</script>
