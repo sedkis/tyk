@@ -6,26 +6,30 @@ This is where you can register an OAuth client that will provide access to all t
     <label for="r2">App Description</label>
     <input type="text" name="appDescription" value="App Description" id="r2">
     
-
     <br>
     <label for="r3">Redirect URL</label>
-    <input type="text" name="redirectURLs" value="Redirect Url" id="r3">
+    <input type="text" name="redirectURLs[]" value="Redirect Url" id="r3">
 
-    <input type="text" name="policy_id" value="5efdfc7327d9a10001e0d326" id="r4" style="display:none">
-    
-    <input type="text" name="csrf_token" value="MY_CSRF_TOKEN" id="r5" style="display:none">
+    <!-- Hidden -->
+    <input type="text" name="policy_id" value="POLICY_ID_PORTAL_API" id="r4" style="display:none">
+    <input type="text" name="csrf_token" value="" id="r5" style="display:none">
+    <input type="text" name="client_id" value="" id="r6" style="display:none">
     
   </form>
    
   <br>
-<button id=mybutton>Create New Client</button>
+<button id=mybutton>Create Master Client</button>
 
 <script>
 window.onload = function() {
+    $.get('http://tyk-portal.localhost:3000/portal/oauth-clients/new', (response) => {
+        csrf = response.substr(response.search('csrf')+19, response.substr(response.search('csrf')+19).search("\""))
+        csrf = $('<div>').html(csrf).text();
+        $('#r5').val(csrf)
+        console.log('extracted and injected crsf token')
+    });
 
     $("#mybutton").click(function(){
-        console.log('button pressed')
-
         var data = $('form').serialize();
         $.post('http://tyk-portal.localhost:3000/portal/oauth-clients/new', data);
     });
