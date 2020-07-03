@@ -31,7 +31,9 @@ window.onload = function() {
 
     $("#mybutton").click(function(){
         var data = $('form').serialize();
-        $.post('http://tyk-portal.localhost:3000/portal/oauth-clients/new', data);
+        $.post('http://tyk-portal.localhost:3000/portal/oauth-clients/new', data, function(response) {
+            $('body').html(response)
+        });
     });
 }
     
