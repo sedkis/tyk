@@ -13,6 +13,9 @@ Our goal:
 ![Multiple Auth](multiple-auth.png)
 
 2) Add the [Javascript plugin](pre-auth-check.js) to the local filesystem.  
+The plugin runs in the "pre" phase, verifying the requests before they reach the authentication stage.  This forces users to include an "Authorization" header as well as the client cert.
+https://tyk.io/docs/getting-started/key-concepts/middleware-execution-order/
+
 
 A) Make sure you define the relative path (to the Gateway binary) in the API Definition.  
 
