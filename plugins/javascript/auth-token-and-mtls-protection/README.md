@@ -1,7 +1,9 @@
 ### How to Protect an API with Auth Token & MTLS
 
 Our goal:
+
 -- protect an API with Tyk using both Auth Tokens & mTLS
+
 -- Allow our developers to upload their client certs through the Developer Portal
 
 ## Setup Instructions
