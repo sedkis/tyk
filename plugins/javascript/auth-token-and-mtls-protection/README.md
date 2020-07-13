@@ -38,6 +38,11 @@ $ curl -k https://localhost:8081/mtls-auth-api/get --cert cert.pem --key key.pem
     "error": "Must Use Auth Token & Cert"
 }
 
+$ curl -k https://localhost:8081/mtls-auth-api/get --header "Authorization: eyJ..."
+{
+    "error": "Client TLS certificate is required"
+}
+
 $ curl -k https://localhost:8081/mtls-auth-api/get --header "Authorization: eyJ..." --cert cert.pem --key key.pem
 {
   "hello": "world"
