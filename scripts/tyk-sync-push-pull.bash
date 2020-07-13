@@ -8,8 +8,7 @@ remote_dashboard_api_key=7b5d4aa3456346d448304e1e586e12a8
 remote_org_id=5e9d9544a1dcd60001d0ed20
 
 ## don't need to edit probably
-# tyk_sync_version=tykio/tyk-sync:v1.1.0-27-gbf4dd2f-3-g04f7740
-tyk_sync_version=sedkis/tyk-sync:master-2
+tyk_sync_version=tykio/tyk-sync:v1.1.0-27-gbf4dd2f-3-g04f7740
 
 ### create tmp directory
 mkdir tmp
