@@ -8,7 +8,7 @@ Our goal:
 
 ## Setup Instructions
 
-1) Set up an API with multiple auth types selected and select auth token + mtls, base identity provided by Auth Token **OR** Import the API "api-definition.json" located in this directory
+1) Set up an API with multiple auth types selected and select auth token + mtls, base identity provided by Auth Token **OR** [Import the API "api-definition.json" ](api-definition.json)
 
 ![Multiple Auth](multiple-auth.png)
 
