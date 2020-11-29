@@ -1,0 +1,32 @@
+{
+  "ID": "myproxy2",
+  "Name": "",
+  "OrgID": "5e9d9544a1dcd60001d0ed20",
+  "ActionType": "GenerateOrLoginUserProfile",
+  "MatchedPolicyID": "5eb6349543f0440001373f5c",
+  "Type": "redirect",
+  "ProviderName": "ProxyProvider",
+  "CustomEmailField": "",
+  "CustomUserIDField": "",
+  "ProviderConfig": {
+    "AccessTokenField": "access_token",
+    "ExrtactUserNameFromBasicAuthHeader": false,
+    "OKCode": 200,
+    "OKRegex": "",
+    "OKResponse": "",
+    "ResponseIsJson": true,
+    "TargetHost": "http://host.docker.internal:9001",
+    "UsernameField": "email"
+  },
+  "IdentityHandlerConfig": {
+    "DashboardCredential": "64c804eba0db44f2458bc2556ee60e65"
+  },
+  "ProviderConstraints": {
+    "Domain": "",
+    "Group": ""
+  },
+  "ReturnURL": "http://localhost:3000/sso",
+  "DefaultUserGroupID": "",
+  "CustomUserGroupField": "",
+  "UserGroupMapping": {}
+}
