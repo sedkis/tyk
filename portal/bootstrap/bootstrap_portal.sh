@@ -40,5 +40,29 @@ log_json_result "$result"
 log_message "  Creating Portal home page"
 log_json_result "$(curl $dashboard_base_url/api/portal/pages \
   -H "Authorization: $dashboard_user_api_credentials" \
-  -d @portal-home-page.json 2>> bootstrap.log)"
+  -d '{
+  "is_homepage": true,
+  "template_name": "",
+  "title": "Developer Portal Home",
+  "slug": "/",
+  "fields": {
+    "JumboCTATitle": "Tyk Developer Portal",
+    "SubHeading": "Sub Header",
+    "JumboCTALink": "#cta",
+    "JumboCTALinkTitle": "Your awesome APIs, hosted with Tyk!",
+    "PanelOneContent": "Panel 1 content.",
+    "PanelOneLink": "#panel1",
+    "PanelOneLinkTitle": "Panel 1 Button",
+    "PanelOneTitle": "Panel 1 Title",
+    "PanelThereeContent": "",
+    "PanelThreeContent": "Panel 3 content.",
+    "PanelThreeLink": "#panel3",
+    "PanelThreeLinkTitle": "Panel 3 Button",
+    "PanelThreeTitle": "Panel 3 Title",
+    "PanelTwoContent": "Panel 2 content.",
+    "PanelTwoLink": "#panel2",
+    "PanelTwoLinkTitle": "Panel 2 Button",
+    "PanelTwoTitle": "Panel 2 Title"
+  }
+}')"
 
