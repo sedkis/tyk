@@ -1,10 +1,10 @@
-On a new install of Tyk, whether on-prem or Tyk Cloud, you need to bootstrap the Tyk Dev Portal in order to get past the:
+On a new install of Tyk, whether on-prem or Tyk Cloud, you need to bootstrap the Tyk Dev Portal in order to get past this error and others.
 
 ```
 Home Page Not Found
 ```
 
-Error and others.  This script will bootstrap a default Portal, information from [portal-home-page.json](./portal-home-page.json)
+This script will bootstrap a default Portal, information from [portal-home-page.json](./portal-home-page.json)
 
 
 ### How to use
