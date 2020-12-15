@@ -9,9 +9,11 @@ This script will bootstrap a default Portal, information from [portal-home-page.
 
 ### How to use
 
-Simply add your configurations to the [bootstrap_portal.sh](./bootstrap_portal.sh) script, and then run the script.
+1. Add your environment configs to the [bootstrap_portal.sh](./bootstrap_portal.sh) script.  Your user API key and Organization ID come from the User Profile screen.
 
-Your user API key and Organization ID come from the User Profile screen.
+![demo](./apikey.png)
+
+2. Run the script
 
 ```
 $ chmod +x ./bootstrap_portal.sh
